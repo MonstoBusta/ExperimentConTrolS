@@ -1,4 +1,4 @@
-# LambdaControls
+# ExperimentConTrolS
 
 ![Java 8](https://img.shields.io/badge/language-Java%208-9B599A.svg?style=flat-square)
 [![GitHub license](https://img.shields.io/github/license/LambdAurora/LambdaControls?style=flat-square)](https://raw.githubusercontent.com/LambdAurora/LambdaControls/master/LICENSE)
@@ -7,7 +7,7 @@
 ![Version](https://img.shields.io/github/v/tag/LambdAurora/LambdaControls?label=version&style=flat-square)
 [![CurseForge](http://cf.way2muchnoise.eu/title/354231.svg)](https://www.curseforge.com/minecraft/mc-mods/lambdacontrols)
 
-A Fabric Minecraft mod which adds better controls, reach-around and controller support.
+A Fabric Minecraft mod which adds better controls, reach-around and controller support for Combat Test Snapshot 8c.
 
 ## What's this mod?
 
