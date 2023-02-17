@@ -1,16 +1,17 @@
 {
   "schemaVersion": 1,
   "id": "lambdacontrols",
-  "name": "LambdaControls",
+  "name": "ExperimentControls",
   "version": "${version}",
-  "description": "Adds better controls: controller and touchscreen support.",
+  "description": "Controller and touchscreen support for CTS 8c.",
   "authors": [
     "LambdAurora"
+    "moehreag"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/lambdacontrols",
-    "sources": "https://github.com/LambdAurora/LambdaControls.git",
-    "issues": "https://github.com/LambdAurora/LambdaControls/issues"
+    "homepage": "https://modrinth.com/mod/experimentcontrols",
+    "sources": "https://github.com/MonstoBusta/ExperimentConTrolS.git",
+    "issues": "https://github.com/MonstoBusta/ExperimentConTrolS/issues"
   },
   "license": "MIT",
   "icon": "assets/lambdacontrols/icon.png",
