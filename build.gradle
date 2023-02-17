@@ -12,12 +12,12 @@ buildscript {
 }
 
 plugins {
-    id 'fabric-loom' version '1.0-SNAPSHOT'
+    id 'fabric-loom' version '1.1-SNAPSHOT'
     id 'java-library'
     id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '6.1.0'
     id 'org.quiltmc.gradle.licenser' version '1.+'
-    // id 'org.cadixdev.licenser' version '0.6.1'
+    //id 'org.cadixdev.licenser' version '0.5.1'
 }
 
 import net.fabricmc.loom.task.RemapJarTask
