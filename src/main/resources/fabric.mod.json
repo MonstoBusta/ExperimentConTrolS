@@ -5,8 +5,8 @@
   "version": "${version}",
   "description": "Controller and touchscreen support for CTS 8c.",
   "authors": [
-    "LambdAurora"
-    "moehreag"
+    "LambdAurora",
+    "moehreag",
     "MonstoBusta"
   ],
   "contact": {

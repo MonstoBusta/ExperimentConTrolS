@@ -17,6 +17,7 @@ plugins {
     id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '6.1.0'
     id 'org.quiltmc.gradle.licenser' version '1.+'
+    // id 'org.cadixdev.licenser' version '0.6.1'
 }
 
 import net.fabricmc.loom.task.RemapJarTask
