@@ -9,11 +9,11 @@ A Fabric Minecraft mod which adds better controls, reach-around and controller s
 
 ## What's this mod?
 
-This mod adds better controls, reach-around features, etc.
+Did I mention that this mod adds better controls, reach-around features, etc. That includes stuff like controller support.
 
-Have you ever dreamed of test CTS combat with your controller? Yes? Then this mod is made for you!
+Ever wanted to test CTS combat with your controller? Then this mod is for you!
 
-Did I forget to mention this mod adds controller support.
+Did I forget to mention this mod adds controller support?
 
 ## ✅ Features:
 
