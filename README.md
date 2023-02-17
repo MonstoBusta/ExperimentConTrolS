@@ -4,8 +4,6 @@
 [![GitHub license](https://img.shields.io/github/license/LambdAurora/LambdaControls?style=flat-square)](https://raw.githubusercontent.com/LambdAurora/LambdaControls/master/LICENSE)
 ![Environment: Client](https://img.shields.io/badge/environment-client-1976d2?style=flat-square)
 [![Mod loader: Fabric]][fabric]
-![Version](https://img.shields.io/github/v/tag/LambdAurora/LambdaControls?label=version&style=flat-square)
-[![CurseForge](http://cf.way2muchnoise.eu/title/354231.svg)](https://www.curseforge.com/minecraft/mc-mods/lambdacontrols)
 
 A Fabric Minecraft mod which adds better controls, reach-around and controller support for Combat Test Snapshot 8c.
 
