@@ -11,9 +11,9 @@ A Fabric Minecraft mod which adds better controls, reach-around and controller s
 
 This mod adds better controls, reach-around features, etc.
 
-Haven't you dreamed to travel in your modded Minecraft world with your controller? Yes? Then this mod is made for you!
+Have you ever dreamed of test CTS combat with your controller? Yes? Then this mod is made for you!
 
-This mod also adds controller support.
+Did I forget to mention this mod adds controller support.
 
 ## ✅ Features:
 
