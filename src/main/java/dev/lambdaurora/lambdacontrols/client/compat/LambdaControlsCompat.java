@@ -44,10 +44,6 @@ public class LambdaControlsCompat {
             mod.log("Adding okzoomer compatibility...");
             HANDLERS.add(new OkZoomerCompat());
         }
-        if (isReiPresent()) {
-            mod.log("Adding REI compatiblity...");
-            HANDLERS.add(new ReiCompat());
-        }
         if (FabricLoader.getInstance().isModLoaded("hardcorequesting") && LambdaReflection.doesClassExist(HQMCompat.GUI_BASE_CLASS_PATH)) {
             mod.log("Adding HQM compatibility...");
             HANDLERS.add(new HQMCompat());

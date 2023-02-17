@@ -12,11 +12,11 @@ buildscript {
 }
 
 plugins {
-    id 'fabric-loom' version '0.6-SNAPSHOT'
+    id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'java-library'
     id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '6.1.0'
-    id 'org.cadixdev.licenser' version '0.5.0'
+    id 'org.quiltmc.gradle.licenser' version '1.+'
 }
 
 import net.fabricmc.loom.task.RemapJarTask
@@ -37,9 +37,6 @@ def getMCVersionString() {
     return project.minecraft_version.substring(0, lastDot)
 }
 
-minecraft {
-}
-
 repositories {
     mavenLocal()
     mavenCentral()
@@ -47,6 +44,7 @@ repositories {
     maven {
         name = 'CottonMC'
         url = 'http://server.bbkr.space:8081/artifactory/libs-snapshot'
+        allowInsecureProtocol = true
     }
     maven {
         name = 'Terraformers'
@@ -54,6 +52,14 @@ repositories {
     }
     maven { url "https://maven.shedaniel.me/" }
     maven { url = "https://jitpack.io" }
+    maven {
+        name = 'CombatReforged'
+        url = 'https://maven.fabric.rizecookey.net/'
+    }
+}
+
+loom {
+    setIntermediaryUrl('https://maven.fabric.rizecookey.net/net/fabricmc/intermediary/1.16_combat-6/intermediary-1.16_combat-6-v2.jar')
 }
 
 configurations {
@@ -70,7 +76,7 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+    modImplementation "io.github.prospector:modmenu:${project.modmenu_version}"
     modImplementation "com.github.lambdaurora:spruceui:${project.spruceui_version}"
     include "com.github.lambdaurora:spruceui:${project.spruceui_version}"
 
@@ -79,8 +85,6 @@ dependencies {
         exclude group: 'me.shedaniel.cloth'
         exclude group: 'io.github.prospector'
     }
-
-    modImplementation("me.shedaniel:RoughlyEnoughItems:5.10.184")
 
     shadow "com.electronwill.night-config:core:3.6.3"
     shadow "com.electronwill.night-config:toml:3.6.3"
@@ -118,7 +122,7 @@ jar {
 }
 
 license {
-    header file('HEADER')
+    rule file('HEADER')
     include '**/*.java'
 }
 

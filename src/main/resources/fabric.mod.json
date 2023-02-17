@@ -27,8 +27,7 @@
     ]
   },
   "mixins": [
-    "lambdacontrols.mixins.json",
-    "lambdacontrols_compat.mixins.json"
+    "lambdacontrols.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.1",
