@@ -27,7 +27,7 @@ debug = false
         vertical_drifting = true
     [gameplay.reacharound]
         # Enables front block placing like in Bedrock Edition.
-        horizontal = false
+        horizontal = true
         # Enables vertical reacharound.
         vertical = false
         # Enables front block placing outline.
