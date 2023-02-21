@@ -24,7 +24,7 @@ Did I forget to mention this mod adds controller support?
 - Vertical reach-around.
 - Many Bedrock Edition features:
    - Toggleable fly drifting
-   - Front block placing (be careful with this one)
+   - Front block placing (should be fine on CTS servers)
 - New controls settings!
 - Many options in config to change to your liking.
 - Many controllers supported and in a simply way your own controller mappings.
