@@ -1,5 +1,17 @@
 # Changelog
 
+# ExperimentConTrolS
+
+### v1.6.1
+
+- A port of 1.6.0 to CTS 8c.
+
+### v1.6.2
+
+- Patches a bug discovered in 1.6.1 where using items didn't slow down speed at all.
+
+# LambdaControls
+
 ## v1.0.0
 
 :tada: First release! :tada: 
