@@ -12,7 +12,7 @@ package dev.lambdaurora.lambdacontrols;
 import dev.lambdaurora.lambdacontrols.event.PlayerChangeControlsModeCallback;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.network.PacketByteBuf;
@@ -47,19 +47,19 @@ public class LambdaControls implements ModInitializer {
         INSTANCE = this;
         this.log("Initializing LambdaControls...");
 
-        ServerSidePacketRegistry.INSTANCE.register(HELLO_CHANNEL,
-                (context, attachedData) -> {
-                    String version = attachedData.readString(32);
-                    ControlsMode.byId(attachedData.readString(32))
-                            .ifPresent(controlsMode -> context.getTaskQueue()
-                                    .execute(() -> PlayerChangeControlsModeCallback.EVENT.invoker().apply(context.getPlayer(), controlsMode)));
-                    context.getTaskQueue().execute(() ->
-                            ServerSidePacketRegistry.INSTANCE.sendToPlayer(context.getPlayer(), FEATURE_CHANNEL, this.makeFeatureBuffer(LambdaControlsFeature.HORIZONTAL_REACHAROUND)));
-                });
-        ServerSidePacketRegistry.INSTANCE.register(CONTROLS_MODE_CHANNEL,
-                (context, attachedData) -> ControlsMode.byId(attachedData.readString(32))
-                        .ifPresent(controlsMode -> context.getTaskQueue()
-                                .execute(() -> PlayerChangeControlsModeCallback.EVENT.invoker().apply(context.getPlayer(), controlsMode))));
+        ServerPlayNetworking.registerGlobalReceiver(HELLO_CHANNEL, (server, player, handler, buf, responseSender) -> {
+            String version = buf.readString(32);
+            ControlsMode.byId(buf.readString(32))
+                    .ifPresent(controlsMode -> server
+                            .execute(() -> PlayerChangeControlsModeCallback.EVENT.invoker().apply(player, controlsMode)));
+            server.execute(() -> {
+                ServerPlayNetworking.send(player, FEATURE_CHANNEL, this.makeFeatureBuffer(LambdaControlsFeature.HORIZONTAL_REACHAROUND));
+            });
+        });
+        ServerPlayNetworking.registerGlobalReceiver(CONTROLS_MODE_CHANNEL,
+                (server, player, handler, buf, responseSender) -> ControlsMode.byId(buf.readString(32))
+                        .ifPresent(controlsMode -> server
+                                .execute(() -> PlayerChangeControlsModeCallback.EVENT.invoker().apply(player, controlsMode))));
     }
 
     /**
