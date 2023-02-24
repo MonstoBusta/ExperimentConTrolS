@@ -22,7 +22,7 @@ debug = false
     # Fly behaviors
     [gameplay.fly]
         # Enables fly drifting.
-        drifting = false
+        drifting = true
         # Enables vertical fly drifting.
         vertical_drifting = true
     [gameplay.reacharound]
