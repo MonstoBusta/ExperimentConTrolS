@@ -18,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Represents the movement handler.
  *
- * @author LambdAurora
- * @version 1.6.0
+ * @author LambdAurora (with two lines of code by MonstoBusta)
+ * @version 1.6.2
  * @since 1.4.0
  */
 public final class MovementHandler implements PressAction {
@@ -79,7 +79,7 @@ public final class MovementHandler implements PressAction {
             this.movementForward = direction * value;
 
             // Slowing down if sneaking.
-            if (client.player.input.sneaking)
+            if (client.player.input.sneaking || client.player.isUsingItem())
                 this.movementForward *= 0.3D;
         } else {
             // Handle sideways movement.
@@ -88,7 +88,7 @@ public final class MovementHandler implements PressAction {
             this.movementSideways = direction * value;
 
             // Slowing down if sneaking.
-            if (client.player.input.sneaking)
+            if (client.player.input.sneaking || client.player.isUsingItem())
                 this.movementSideways *= 0.3D;
         }
 
