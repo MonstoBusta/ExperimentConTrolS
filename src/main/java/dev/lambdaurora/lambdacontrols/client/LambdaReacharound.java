@@ -15,6 +15,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.math.Vector3d;
+import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.hit.BlockHitResult;
@@ -23,6 +25,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.RaycastContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -122,28 +125,31 @@ public class LambdaReacharound {
         if (client.player != null && client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.MISS && client.player.isOnGround() && client.player.pitch > 44.5F) {
             if (client.player.isRiding())
                 return null;
-            BlockPos playerPos = client.player.getBlockPos().down();
+            Vec3d playerPosi = client.player.getPos(); // temporary pos for the next line
+            Vec3d playerPos = new Vec3d(playerPosi.getX(), playerPosi.getY() - 1.0, playerPosi.getZ()); // imitates BlockPos playerPos = client.player.getBlockPos().down();
             if (client.player.getY() - playerPos.getY() - 1.0 >= 0.25) {
-                playerPos = playerPos.up();
+                playerPos = new Vec3d(playerPos.getX(), playerPos.getY() + 1.0, playerPos.getZ());
                 this.onSlab = true;
             } else {
                 this.onSlab = false;
             }
-            BlockPos targetPos = new BlockPos(client.crosshairTarget.getPos()).subtract(playerPos);
-            BlockPos vector = new BlockPos(MathHelper.clamp(targetPos.getX(), -1, 1), 0, MathHelper.clamp(targetPos.getZ(), -1, 1));
-            BlockPos blockPos = playerPos.add(vector);
+
+            Vec3d targetPos = new Vec3d(client.crosshairTarget.getPos().getX(), client.crosshairTarget.getPos().getY(), client.crosshairTarget.getPos().getZ()).subtract(playerPos);
+            Vec3d vector = new Vec3d(MathHelper.clamp(targetPos.getX(), -1.3F, 1.3F), 0, MathHelper.clamp(targetPos.getZ(), -1.3F, 1.3F)); // to match CTS 8a's horizontal reach
+            Vec3d blockPos = playerPos.add(vector);
+            BlockPos blockyPos = new BlockPos(blockPos.getX(), blockPos.getY(), blockPos.getZ()); // for functions that still need BlockPos
 
             Direction direction = client.player.getHorizontalFacing();
 
-            BlockState state = client.world.getBlockState(blockPos);
+
+            BlockState state = client.world.getBlockState(blockyPos);
             if (!state.isAir())
                 return null;
-            BlockState adjacentBlockState = client.world.getBlockState(blockPos.offset(direction.getOpposite()));
+            BlockState adjacentBlockState = client.world.getBlockState(blockyPos.offset(direction.getOpposite()));
             if (adjacentBlockState.isAir() || adjacentBlockState.getBlock() instanceof FluidBlock || (vector.getX() == 0 && vector.getZ() == 0)) {
                 return null;
             }
-
-            return new BlockHitResult(client.crosshairTarget.getPos(), direction, blockPos, false);
+            return new BlockHitResult(blockPos, direction, blockyPos, false);
         }
         return null;
     }
