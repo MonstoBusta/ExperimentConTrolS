@@ -135,7 +135,7 @@ public class LambdaReacharound {
             }
 
             Vec3d targetPos = new Vec3d(client.crosshairTarget.getPos().getX(), client.crosshairTarget.getPos().getY(), client.crosshairTarget.getPos().getZ()).subtract(playerPos);
-            Vec3d vector = new Vec3d(MathHelper.clamp(targetPos.getX(), -1.3F, 1.3F), 0, MathHelper.clamp(targetPos.getZ(), -1.3F, 1.3F)); // to match CTS 8a's horizontal reach
+            Vec3d vector = new Vec3d(MathHelper.clamp(targetPos.getX(), -2, 2), 0, MathHelper.clamp(targetPos.getZ(), -2, 2)); // to match CTS 8a's horizontal reach
             Vec3d blockPos = playerPos.add(vector);
             BlockPos blockyPos = new BlockPos(blockPos.getX(), blockPos.getY(), blockPos.getZ()); // for functions that still need BlockPos
 
