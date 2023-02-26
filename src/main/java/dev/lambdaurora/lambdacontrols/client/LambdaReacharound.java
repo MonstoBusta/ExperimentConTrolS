@@ -119,7 +119,7 @@ public class LambdaReacharound {
         if (!LambdaControlsFeature.HORIZONTAL_REACHAROUND.isAvailable())
             return null;
 
-        if (client.player != null && client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.MISS && client.player.isOnGround() && client.player.pitch > 35.0F) {
+        if (client.player != null && client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.MISS && client.player.isOnGround() && client.player.pitch > 44.5F) {
             if (client.player.isRiding())
                 return null;
             BlockPos playerPos = client.player.getBlockPos().down();

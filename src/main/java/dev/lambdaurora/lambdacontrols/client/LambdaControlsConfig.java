@@ -42,9 +42,9 @@ public class LambdaControlsConfig {
     // Gameplay
     private static final boolean DEFAULT_ANALOG_MOVEMENT = true;
     private static final boolean DEFAULT_FAST_BLOCK_INTERACTION = true;
-    private static final boolean DEFAULT_FLY_DRIFTING = false;
+    private static final boolean DEFAULT_FLY_DRIFTING = true;
     private static final boolean DEFAULT_FLY_VERTICAL_DRIFTING = true;
-    private static final boolean DEFAULT_HORIZONTAL_REACHAROUND = false;
+    private static final boolean DEFAULT_HORIZONTAL_REACHAROUND = true;
     private static final boolean DEFAULT_VERTICAL_REACHAROUND = false;
     private static final boolean DEFAULT_REACHAROUND_OUTLINE = true;
     private static final int[] DEFAULT_REACHAROUND_OUTLINE_COLOR = new int[]{255, 255, 255, 102};
