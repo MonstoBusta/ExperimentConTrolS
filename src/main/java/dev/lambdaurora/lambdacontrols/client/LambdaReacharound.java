@@ -31,9 +31,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Represents the reach-around API of LambdaControls.
+ * Represents the reach-around API of ExperimentConTrolS.
  *
- * @version 1.5.0
+ * @version 1.6.2
  * @since 1.3.2
  */
 public class LambdaReacharound {
@@ -122,7 +122,7 @@ public class LambdaReacharound {
         if (!LambdaControlsFeature.HORIZONTAL_REACHAROUND.isAvailable())
             return null;
 
-        if (client.player != null && client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.MISS && client.player.isOnGround() && client.player.pitch > 44.5F) {
+        if (client.player != null && client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.MISS && client.player.isOnGround() && client.player.pitch >= 44.5F) {
             if (client.player.isRiding())
                 return null;
             Vec3d playerPosi = client.player.getPos(); // temporary pos for the next line
@@ -135,7 +135,7 @@ public class LambdaReacharound {
             }
 
             Vec3d targetPos = new Vec3d(client.crosshairTarget.getPos().getX(), client.crosshairTarget.getPos().getY(), client.crosshairTarget.getPos().getZ()).subtract(playerPos);
-            Vec3d vector = new Vec3d(MathHelper.clamp(targetPos.getX(), -2, 2), 0, MathHelper.clamp(targetPos.getZ(), -2, 2)); // to match CTS 8a's horizontal reach
+            Vec3d vector = new Vec3d(MathHelper.clamp(targetPos.getX(), -1.648833156, 1.648833156), 0, MathHelper.clamp(targetPos.getZ(), -1.648833156, 1.648833156)); // to match CTS 8a's horizontal reach
             Vec3d blockPos = playerPos.add(vector);
             BlockPos blockyPos = new BlockPos(blockPos.getX(), blockPos.getY(), blockPos.getZ()); // for functions that still need BlockPos
 
@@ -149,7 +149,7 @@ public class LambdaReacharound {
             if (adjacentBlockState.isAir() || adjacentBlockState.getBlock() instanceof FluidBlock || (vector.getX() == 0 && vector.getZ() == 0)) {
                 return null;
             }
-            return new BlockHitResult(blockPos, direction, blockyPos, false);
+            return new BlockHitResult(client.crosshairTarget.getPos(), direction, blockyPos, false);
         }
         return null;
     }
