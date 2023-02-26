@@ -10,6 +10,14 @@
 
 - Patches a bug discovered in 1.6.1 where using items didn't slow down speed at all.
 
+### v1.6.3
+
+- Changes angle of horizontal reacharound to match CTS 8a
+
+### v1.6.4
+
+- Horizontal reacharound is now completely identical to CTS 8a.
+
 # LambdaControls
 
 ## v1.0.0
