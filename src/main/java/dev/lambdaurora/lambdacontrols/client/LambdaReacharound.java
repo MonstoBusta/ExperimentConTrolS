@@ -1,5 +1,6 @@
 /*
  * Copyright © 2021 LambdAurora <aurora42lambda@gmail.com>
+ * Copyright © 2023 MonstoBusta <monstobusta@gmail.com>
  *
  * This file is part of ExperimentConTrolS.
  *
@@ -125,8 +126,11 @@ public class LambdaReacharound {
         if (client.player != null && client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.MISS && client.player.isOnGround() && client.player.pitch >= 44.5F) {
             if (client.player.isRiding())
                 return null;
-            Vec3d playerPosi = client.player.getPos(); // temporary pos for the next line
-            Vec3d playerPos = new Vec3d(playerPosi.getX(), playerPosi.getY() - 1.0, playerPosi.getZ()); // imitates BlockPos playerPos = client.player.getBlockPos().down();
+            // temporary pos for the next line
+            Vec3d playerPosi = client.player.getPos(); 
+            
+            // imitates BlockPos playerPos = client.player.getBlockPos().down();
+            Vec3d playerPos = new Vec3d(playerPosi.getX(), playerPosi.getY() - 1.0, playerPosi.getZ()); 
             if (client.player.getY() - playerPos.getY() - 1.0 >= 0.25) {
                 playerPos = new Vec3d(playerPos.getX(), playerPos.getY() + 1.0, playerPos.getZ());
                 this.onSlab = true;
@@ -137,10 +141,11 @@ public class LambdaReacharound {
             Vec3d targetPos = new Vec3d(client.crosshairTarget.getPos().getX(), client.crosshairTarget.getPos().getY(), client.crosshairTarget.getPos().getZ()).subtract(playerPos);
             Vec3d vector = new Vec3d(MathHelper.clamp(targetPos.getX(), -1.648833156, 1.648833156), 0, MathHelper.clamp(targetPos.getZ(), -1.648833156, 1.648833156)); // to match CTS 8a's horizontal reach
             Vec3d blockPos = playerPos.add(vector);
-            BlockPos blockyPos = new BlockPos(blockPos.getX(), blockPos.getY(), blockPos.getZ()); // for functions that still need BlockPos
+            
+            // for functions that still need BlockPos
+            BlockPos blockyPos = new BlockPos(blockPos.getX(), blockPos.getY(), blockPos.getZ()); 
 
             Direction direction = client.player.getHorizontalFacing();
-
 
             BlockState state = client.world.getBlockState(blockyPos);
             if (!state.isAir())
